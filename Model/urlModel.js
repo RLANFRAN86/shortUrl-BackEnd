@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const {v1} = require("uid")
+const {v1} = require("uuid")
 
 
 const urlSchema  = new Schema({ 
@@ -13,19 +13,13 @@ const urlSchema  = new Schema({
     shortUrl: {
         type: String,
         unique: true,
-        default: ()=>`http://localhost:3001/api/geturl/${v1()}`,
+        default: () =>`http://localhost:3001/api/geturl/${v1()}`,
     },
 
     GeneratedUrl:{
         type: String,
         required: true,
         default: 0
-    },
-
-    GeneratedUrl: {
-        type: String, 
-        ref: "User",
-        default: null
     },
 
     uid: {

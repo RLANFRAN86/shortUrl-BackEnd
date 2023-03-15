@@ -1,6 +1,7 @@
 const loginRouter = require("express").Router();
 const User = require("../Model/userModel");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 
 const login = async (request, response) => {
@@ -18,15 +19,25 @@ const login = async (request, response) => {
 
   const validPassword = await bcrypt.compare(password, user.password);
 
-  if (!validPassword) {
+  if (!user || !validPassword) {
     return response.status(401).json({
-      error: "Email or password invalid",
+      error: "Email o password invalido",
     });
   }
+
+  //luego de verificar que la autenticacion es exitosa -> crea objeto con mail y id usuario (sign jsonwebtoken)
+  const userToken = {
+    email: user.email,
+    id: user._id,
+  };
+
+  const token = jwt.sign(userToken, process.env.SECRET_TOKEN);
 
   return response.send({
     email: user.email,
     id: user._id,
+    token,
+
   });
 }
 

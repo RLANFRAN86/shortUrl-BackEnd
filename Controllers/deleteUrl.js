@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 async function deleteUrlHandler(req, res) {
     //captura de errores
   try {
-    const deletedUrl = await urlManager.deleteUrl(mongoose.Types.ObjectId(req.body._id));
+    const deletedUrl = await urlManager.deleteUrl(new mongoose.Types.ObjectId(req.body._id));
     console.log(req.body._id, "respuesta en body ");
     console.log(deletedUrl, "delete url");
 

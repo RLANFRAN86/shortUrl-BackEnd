@@ -21,7 +21,7 @@ class urlManager {
   // Busca en la base de datos instancias de la clase Url que tengan una propiedad UserId igual a la cadena "id" proporcionada
   static async getIdUrl(id) {
     // Devuelve un array con todas las instancias de la clase Url que cumplen con el criterio de búsqueda
-    const data = await Url.find({ UserId: id });
+    const data = await Url.findOne({ UserId: id });
     return data;
   }
 
@@ -29,6 +29,11 @@ class urlManager {
   static async deleteUrl(id) {
     // Devuelve un objeto con información sobre la eliminación de la Url
     const data = await Url.deleteOne({ _id: id });
+    return data;
+  }
+
+  static async getUrlData(url){
+    const data = await Url.findOne({ url: url });
     return data;
   }
 }
