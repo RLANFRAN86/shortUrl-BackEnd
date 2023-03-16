@@ -7,7 +7,13 @@ const urlSchema  = new Schema({
     originalUrl: {
         type: String,
         required: true,
-        GeneratedUrl: String,
+        // GeneratedUrl: String,
+    },
+
+    UserId: {
+        type: mongoose.Types.ObjectId, 
+        required: true, 
+        default: () => new mongoose.Types.ObjectId()
     },
 
     shortUrl: {
@@ -21,11 +27,6 @@ const urlSchema  = new Schema({
         required: true,
         default: 0
     },
-
-    uid: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    }
 });
    
 module.exports = mongoose.model('Url', urlSchema);

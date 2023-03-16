@@ -29,10 +29,12 @@ class urlManager {
   static async deleteUrl(id) {
     // Devuelve un objeto con información sobre la eliminación de la Url
     const data = await Url.deleteOne({ _id: id });
+    console.log(id)
     return data;
+    
   }
 
-  static async getUrlData(url){
+  static async getDataUrl(url){
     const data = await Url.findOne({ url: url });
     return data;
   }

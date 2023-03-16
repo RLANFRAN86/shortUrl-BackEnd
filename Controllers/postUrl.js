@@ -10,7 +10,9 @@ const postUrl = async (req, res) => {
     GeneratedUrl: `${uid()}`,
     UserId,
   });
-  res.status(201).json({ url: url }).end();
+  res.status(201).json({ url: url });
+  console.log(url)
+  console.log(UserId)
 };
 
 module.exports = postUrl;

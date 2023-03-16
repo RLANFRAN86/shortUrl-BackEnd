@@ -24,12 +24,12 @@ const userSchema =  new Schema({
 });
 
 // transform se ejecuta c/vez que convierta un doc de mongo en obj JSON
-const transformObject = (document, returnedObject) => {
-  returnedObject.id = returnedObject._id.toString();
-  delete returnedObject._id;
-}
+// const transformObject = (document, returnedObject) => {
+//   returnedObject.id = returnedObject._id.toString();
+//   delete returnedObject._id;
+// }
 
-mongoose.set('toJSON', { transform: transformObject });
+// mongoose.set('toJSON', { transform: transformObject });
 
 
 const User = mongoose.model('User', userSchema);
