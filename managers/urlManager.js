@@ -34,10 +34,27 @@ class urlManager {
     
   }
 
-  static async getDataUrl(url){
-    const data = await Url.findOne({ url: url });
-    return data;
+  // static async getDataUrl(url){
+  //   const data = await Url.findOne({ url: url });
+  //   return data;
+  // }
+
+  static async getDataUrl(req, res) {
+    try {
+      const { url } = req.params;
+      const shortUrl = await Url.findOne({ url });
+
+      if (!shortUrl) {
+        throw new Error(`Url doesn't exist`);
+      }
+
+      res.redirect(shortUrl.originalUrl);
+    } catch (error) {
+      res.status(404).json({ error: error.message });
+    }
   }
+
+
 }
 
 module.exports = urlManager;
