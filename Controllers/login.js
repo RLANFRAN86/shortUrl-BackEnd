@@ -37,7 +37,6 @@ const login = async (request, response) => {
     email: user.email,
     id: user._id,
     token,
-
   });
 }
 

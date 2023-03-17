@@ -34,24 +34,22 @@ class urlManager {
     
   }
 
-  // static async getDataUrl(url){
-  //   const data = await Url.findOne({ url: url });
-  //   return data;
-  // }
-
-  static async getDataUrl(req, res) {
-    try {
-      const { url } = req.params;
-      const shortUrl = await Url.findOne({ url });
-
-      if (!shortUrl) {
-        throw new Error(`Url doesn't exist`);
-      }
-
-      res.redirect(shortUrl.originalUrl);
-    } catch (error) {
-      res.status(404).json({ error: error.message });
-    }
+//busca en BD url original para devolverla
+  static async getDataUrl(shortUrl) {
+     console.log("hola",shortUrl)
+     const returnUrl = await Url.findOne({ GeneratedUrl: shortUrl });
+      return returnUrl
+//       console.log(url);
+//       console.log(shortUrl)
+//       if (!shortUrl) {
+//         throw new Error(`Url doesn't exist`);
+//       }
+// //si encuentra url que coincida, redirige a usuario a la url original (shortUrl)
+//       res.redirect(shortUrl.originalUrl);
+//       console.log(shortUrl.originalUrl)
+//     } catch (error) {
+//       res.status(404).json({ error: error.message });
+//     }
   }
 
 

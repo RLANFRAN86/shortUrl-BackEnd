@@ -4,17 +4,18 @@ const {v1} = require("uuid")
 
 
 const urlSchema  = new Schema({ 
+    
     originalUrl: {
         type: String,
         required: true,
         // GeneratedUrl: String,
     },
 
-    UserId: {
-        type: mongoose.Types.ObjectId, 
-        required: true, 
-        default: () => new mongoose.Types.ObjectId()
-    },
+    // UserId: {
+    //     type: mongoose.Types.ObjectId, 
+    //     required: true, 
+    //     default: () => new mongoose.Types.ObjectId()
+    // },
 
     shortUrl: {
         type: String,
