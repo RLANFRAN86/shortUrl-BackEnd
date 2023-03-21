@@ -8,10 +8,8 @@ const postUrl = async (req, res) => {
   const url = await urlManager.createShortUrl({
     originalUrl,
     GeneratedUrl: `${uid()}`,
-    // userId,
   });
   res.status(201).json({ url: url });
-  console.log(url)
 };
 
 module.exports = postUrl;

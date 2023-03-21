@@ -7,16 +7,14 @@ const jwt = require("jsonwebtoken");
 const login = async (request, response) => {
   const { body } = request;
   const { email, password } = body;
-  console.log(body)
   const user = await User.findOne({ email });
-  console.log(user)
 
   if (!user) {
     return response.status(401).json({
-      error: "Email or password invalid",
+      error: "Ingrese usuario",
     });
   }
-
+  
   const validPassword = await bcrypt.compare(password, user.password);
 
   if (!user || !validPassword) {
@@ -39,22 +37,5 @@ const login = async (request, response) => {
     token,
   });
 }
-
-
-
-
-
-
-//   if (!validPassword || !user) {
-//     return response.status(401).json({
-//       error: "Email or password invalid",
-//     });
-//   }
-//   console.log(response)
-//   return response.send({
-//     email: user.email,
-//     id: user._id,
-//   });
-// });
 
 module.exports = login;

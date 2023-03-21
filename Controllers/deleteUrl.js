@@ -3,9 +3,7 @@ const mongoose = require("mongoose");
 
 async function deleteUrlHandler(req, res) {
   const url = await urlManager.deleteUrl(new mongoose.Types.ObjectId(req.body._id));
-  console.log(req.body._id, "Url Eliminada =) ");
-
-  res.status(200).json([]).end();
+  res.status(200).json({ id: req.body._id, message: "Url Eliminada =) " }).end();
 }
 
 module.exports = deleteUrlHandler;

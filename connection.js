@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 //const configuration = require('./configuration')
-
 const database = mongoose.connection
 const user = process.env.USER_ATLAS
 const password = process.env.PASSWORD_ATLAS
